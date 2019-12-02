@@ -1,0 +1,15 @@
+.overlay-container {
+    padding-top: 60px;
+    width: 100%;
+    min-height: 720px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50px;
+}
+
+.overlay {
+    border: 1px solid transparent;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    min-height: 720px;
+}

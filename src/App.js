@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Weather from './components/Weather';
+import React from 'react';
+import TopNav from './components/TopNav/TopNav';
+import Landing from './components/Landing/Landing';
 
 function App() {
   return (
     <div>
-      <h1>My Weather App</h1>
-      <Weather/>
+      <TopNav/>
+      <Landing/>
     </div>
   );
 }

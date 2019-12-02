@@ -1,0 +1,41 @@
+/* Header Nav div */
+
+.header-nav {
+    background-color: #014387;
+    color: white !important;
+    display: flex !important;
+    padding: 5px 10px 10px 30px;
+    height: 35px;
+    box-sizing: unset;
+    position: fixed;
+    width: calc(100% - 40px);
+    padding-top: 10px;
+    padding-bottom: 16px;
+    /* box-shadow: 1px 1px 1px 0.5px gray; */
+    z-index: 9999;
+    top: 0;
+}
+
+/* Top Login Styles */
+
+.top-login * {
+    margin-right: 8px !important;
+    margin-top: 0 !important;
+}
+
+.top-login input {
+    width: 160px;
+}
+
+.top-login button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 12px;
+}
+
+.w3-bar .w3-bar-item {
+    border-color: #014387 !important;
+    border: 1px solid white !important;
+    margin: 0 8px !important;
+}
