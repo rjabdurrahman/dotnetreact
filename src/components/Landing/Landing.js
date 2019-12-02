@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import update from 'react-addons-update';
 import axios from 'axios';
 import Overlay from '../Overlay';
+import { API_URL } from '../../config';
 
 export class Landing extends Component {
 
@@ -20,13 +21,6 @@ export class Landing extends Component {
             userType: global.localStorage.getItem('user') ? JSON.parse(global.localStorage.getItem('user')).userType : 0
         }
     }
-
-    componentDidMount() {
-        axios.get('https://localhost:5001/api/users')
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
-    }
-    
 
     inputHandler = (event) => {
         this.state.user[event.target.name] = event.target.value;
@@ -50,7 +44,7 @@ export class Landing extends Component {
             return;
         }
         console.log(this.state.user);
-        axios.post('https://localhost:5001/api/user', this.state.user)
+        axios.post(`${API_URL}/user`, this.state.user)
             .then(res => {
                 alert('You are registered as ' + res.data.userName);
                 global.localStorage.setItem('user', JSON.stringify(res.data));

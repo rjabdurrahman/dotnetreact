@@ -24,10 +24,11 @@ class TopNav extends Component {
     }
     submitHandler = (event) => {
         event.preventDefault();
-        axios.post(`${API_URL}/user/login`, { username: this.state.username, password: this.state.password })
+        axios.post(`${API_URL}/login`, { username: this.state.username, password: this.state.password })
             .then(res => {
                 this.setState({ logged: true });
-                global.localStorage.setItem('user', JSON.stringify(res.data))
+                global.localStorage.setItem('user', JSON.stringify(res.data));
+                global.location.reload();
             })
             .catch(err => {
                 console.log(err);
