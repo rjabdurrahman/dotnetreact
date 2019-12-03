@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './ProfileCard.css';
 import ProfileImg from './profile.jpg';
-import { doesNotReject } from 'assert';
 import axios from 'axios';
 import { API_URL } from '../../config';
 
@@ -9,7 +8,6 @@ export class ProfileCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            doctorId: this.props.profile.doctorId,
             patientId: JSON.parse(global.localStorage.getItem('user')).userId,
             problem: '',
             showProblem: false
@@ -19,7 +17,7 @@ export class ProfileCard extends Component {
 
     appoinmentHandler(e) {
         e.preventDefault();
-        axios.post(`${API_URL}/appoinment`, { doctorId: this.state.doctorId, patientId: this.state.patientId, problem: this.state.problem, prescription: '' })
+        axios.post(`${API_URL}/appoinment`, { doctorId: this.props.profile.doctorId, patientId: this.state.patientId, problem: this.state.problem, prescription: '' })
             .then(res => {
                 console.log(res.data);
                 this.setState({ showProblem: false });
@@ -29,7 +27,7 @@ export class ProfileCard extends Component {
     }
 
     render() {
-        let { doctorId, name, specialist, institution, mobile } = this.props.profile;
+        let { name, specialist, institution } = this.props.profile;
         return (
             <div key={this.props.data} className="profile-card" style={{ margin: '0 10px' }}>
                 <img src={ProfileImg} alt={ProfileImg} style={{ width: '100%', maxHeight: '300px' }} />

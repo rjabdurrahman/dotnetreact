@@ -60,14 +60,14 @@ class TopNav extends Component {
                     <div className="top-login" style={this.state.logged ? { display: 'block' } : { display: 'none' }}>
                         <div className="w3-bar" style={this.state.type === 1 ? { display: 'block' } : { display: 'none' }}>
                             <a href="/" className="w3-bar-item w3-button w3-bottombar">HOME</a>
-                            <a href="/patient_list" className="w3-bar-item w3-button w3-bottombar">PATIENT LIST</a>
+                            <a href="/patients" className="w3-bar-item w3-button w3-bottombar">PATIENT LIST</a>
                             <a href="/prescribe" className="w3-bar-item w3-button w3-bottombar">PRESCRIBE</a>
                             <a href="/" className="w3-bar-item w3-button w3-bottombar" onClick={this.logOutHandler}>LOG OUT</a>
                         </div>
                         <div className="w3-bar" style={this.state.type === 2 ? { display: 'block' } : { display: 'none' }}>
                             <a href="/" className="w3-bar-item w3-button w3-bottombar">HOME</a>
                             <a href="/apoinment" className="w3-bar-item w3-button w3-bottombar">APPOINMENT</a>
-                            <a href="/my_pres" className="w3-bar-item w3-button w3-bottombar">MY PRESCRIPTIONS</a>
+                            <a href="/mypres" className="w3-bar-item w3-button w3-bottombar">MY PRESCRIPTIONS</a>
                             <a href="/" className="w3-bar-item w3-button w3-bottombar" onClick={this.logOutHandler}>LOG OUT</a>
                         </div>
                     </div>
