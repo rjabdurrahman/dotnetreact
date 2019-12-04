@@ -22,6 +22,10 @@ export class PatientList extends Component {
             .catch(err => console.log(err));
     }
 
+    presSubmit() {
+        console.log('sumit pres')
+    }
+
     render() {
         const patientList = this.state.patients.map((patient, index) => (
             <li onClick={() => this.setState({ pat: patient })} key={index} className="w3-bar">
@@ -59,8 +63,16 @@ export class PatientList extends Component {
                                 </div>
                             }
                             <h2>&#8478;</h2>
+                            {
+                                this.state.pat &&
+                                <p>Problem: {this.state.pat.problem}</p>
+                            }
+                            <p>---------------</p>
                             <div style={{ height: '400px' }}>
-                                Write Here....
+                                <textarea style={{ width: '100%', height: '100%', border: 'none', outline: 'none', fontSize: '22px' }} onClick={(e) => { e.target.value = '' }} defaultValue="Write Here...."></textarea>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <button className="w3-btn main-bg-color" onClick={this.presSubmit}>Submit</button>
                             </div>
                         </div>
                     </div>
