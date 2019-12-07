@@ -9,8 +9,10 @@ export class PatientList extends Component {
         this.state = {
             patients: [],
             pat: null,
-            doctor: JSON.parse(global.localStorage.user)
+            doctor: JSON.parse(global.localStorage.user),
+            prescription: ''
         }
+        this.presSubmit = this.presSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -23,7 +25,11 @@ export class PatientList extends Component {
     }
 
     presSubmit() {
-        console.log('sumit pres')
+        axios.get(`${API_URL}/appoinment/${this.state.pat.appoinmentId}/${this.state.prescription}`)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -69,7 +75,12 @@ export class PatientList extends Component {
                             }
                             <p>---------------</p>
                             <div style={{ height: '400px' }}>
-                                <textarea style={{ width: '100%', height: '100%', border: 'none', outline: 'none', fontSize: '22px' }} onClick={(e) => { e.target.value = '' }} defaultValue="Write Here...."></textarea>
+                                <textarea
+                                    style={{ width: '100%', height: '100%', border: 'none', outline: 'none', fontSize: '22px' }}
+                                    onFocus={(e) => { e.target.value = '' }}
+                                    onChange={(e) => this.setState({ prescription: e.target.value })}
+                                    defaultValue="Write Here....">
+                                </textarea>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                 <button className="w3-btn main-bg-color" onClick={this.presSubmit}>Submit</button>
