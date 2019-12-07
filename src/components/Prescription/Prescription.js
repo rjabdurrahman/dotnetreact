@@ -12,7 +12,7 @@ export class Prescription extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${API_URL}/pappoinment`)
+        axios.get(`${API_URL}/pdocs`)
             .then(res => {
                 this.setState({
                     doctors: res.data.filter(
@@ -28,7 +28,7 @@ export class Prescription extends Component {
         const doctorList = this.state.doctors.map((doctor, index) => (
             <li onClick={() => this.setState({ doc: doctor })} key={index} className="w3-bar">
                 <div className="w3-bar-item">
-                    <span className="w3-large">{doctor.doctorId}</span><br />
+                    <span className="w3-large">{doctor.name}</span><br />
                 </div>
             </li>
         ));
@@ -51,24 +51,24 @@ export class Prescription extends Component {
                         </ul>
                         <div style={{ margin: '25px' }}>
                             {
-                                this.state.pat &&
+                                this.state.doc &&
                                 <div style={{ borderBottom: '1px solid black' }}>
-                                    <h3>Name: {this.state.pat.name}</h3>
-                                    <p>Age: {this.state.pat.age}</p>
-                                    <p>Address: {this.state.pat.address}</p>
+                                    <h3>Dr. {this.state.doc.name}</h3>
+                                    <p>Specialist: {this.state.doc.specialist} ({this.state.doc.institution})</p>
+                                    <p>Mobile: {this.state.doc.mobile}</p>
                                 </div>
                             }
                             <h2>&#8478;</h2>
                             {
-                                this.state.pat &&
-                                <p>Problem: {this.state.pat.problem}</p>
+                                this.state.doc &&
+                                <p>Problem: {this.state.doc.problem}</p>
                             }
                             <p>---------------</p>
                             <div style={{ height: '400px' }}>
-                                <textarea
-                                    style={{ width: '100%', height: '100%', border: 'none', outline: 'none', fontSize: '22px' }}
-                                    defaultValue="Write Here....">
-                                </textarea>
+                                <div
+                                    style={{ width: '100%', height: '100%', border: 'none', outline: 'none', fontSize: '22px' }}>
+                                    {this.state.doc && this.state.doc.prescription}
+                                </div>
                             </div>
                         </div>
                     </div>
