@@ -33,7 +33,7 @@ export class PatientList extends Component {
     }
 
     render() {
-        const patientList = this.state.patients.map((patient, index) => (
+        let patientList = this.state.patients.map((patient, index) => (
             <li onClick={() => this.setState({ pat: patient })} key={index} className="w3-bar">
                 <img src={avater} alt="patient" className="w3-bar-item w3-circle w3-hide-small" style={{ width: '85px' }} />
                 <div className="w3-bar-item">
